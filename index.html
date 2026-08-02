@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feliz 5 Meses</title>
+    <title>Feliz 5 Meses, Mi Amor</title>
     <style>
         :root {
-            --color-principal: #4a154b;
-            --color-acento: #ff4a5a;
-            --color-fondo: #fff5f6;
-            --color-texto: #333333;
-            --color-blanco: #ffffff;
+            --color-fondo: #0a0a0a;
+            --color-tarjeta: #141414;
+            --color-texto: #ffffff;
+            --color-rosa: #ffb7c5;
+            --color-rosa-oscuro: #ff8da1;
         }
 
         * {
@@ -21,90 +20,370 @@
         }
 
         body {
-            font-family: system-ui, -apple-system, sans-serif;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--color-fondo);
             color: var(--color-texto);
             line-height: 1.6;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
         }
 
-        header {
-            background-color: var(--color-principal);
-            color: var(--color-blanco);
-            padding: 1rem;
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+                radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px);
+            background-size: 550px 550px, 350px 350px;
+            background-position: 0 0, 40px 60px;
+            z-index: -1;
+            opacity: 0.4;
         }
 
         main {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 0 1.5rem;
-            flex: 1;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 1.5rem;
         }
 
-        .hero {
-            background-color: var(--color-blanco);
-            padding: 3rem 2rem;
-            border-radius: 12px;
+        section {
+            background-color: var(--color-tarjeta);
+            border: 1px solid rgba(255, 183, 197, 0.2);
+            border-radius: 16px;
+            padding: 2rem 1.5rem;
+            margin-bottom: 2.5rem;
             text-align: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            margin-bottom: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
         }
 
-        .hero h1 {
-            font-size: 2.2rem;
-            color: var(--color-acento);
+        h1, h2, h3 {
+            color: var(--color-rosa);
             margin-bottom: 1rem;
         }
 
-        .hero p {
-            font-size: 1.2rem;
+        blockquote {
+            font-style: italic;
+            color: #ccc;
+            padding: 0.5rem 1rem;
+            margin: 1rem 0;
+            border-left: 3px solid var(--color-rosa);
+            background: rgba(255, 183, 197, 0.05);
+            border-radius: 0 8px 8px 0;
+        }
+
+        .boton {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--color-rosa);
+            border: 2px solid var(--color-rosa);
+            padding: 0.6rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .boton:hover {
+            background-color: var(--color-rosa);
+            color: var(--color-fondo);
+            box-shadow: 0 0 15px var(--color-rosa);
+        }
+
+        .contador-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .contador-item {
+            background: rgba(255,255,255,0.03);
+            padding: 1rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 183, 197, 0.1);
+        }
+        .contador-num {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--color-rosa-oscuro);
+            display: block;
+        }
+
+        .galeria {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        .foto-caja {
+            background: #1a1a1a;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 183, 197, 0.1);
+        }
+        .foto-placeholder {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(45deg, #141414, #222);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: #555;
-            margin-bottom: 1.5rem;
-        }
-
-        .corazon {
             font-size: 3rem;
-            color: var(--color-acento);
-            animation: latido 1.2s infinite;
+            position: relative;
+        }
+        .foto-frase {
+            padding: 1rem;
+            font-size: 0.95rem;
+            color: var(--color-rosa);
         }
 
-        @keyframes latido {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.15); }
-            100% { transform: scale(1); }
+        .contenedor-ojitos {
+            position: relative;
+            padding: 2rem 0;
+        }
+        .nube-palabras {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.6rem;
+            margin-top: 1.5rem;
+        }
+        .palabra-tag {
+            background: rgba(255, 183, 197, 0.1);
+            color: #fff;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(255, 183, 197, 0.2);
+            animation: flotarSuave 3s ease-in-out infinite alternate;
+        }
+        @keyframes flotarSuave {
+            from { transform: translateY(0); }
+            to { transform: translateY(-5px); }
         }
 
-        footer {
-            background-color: var(--color-principal);
-            color: #d1d5db;
-            text-align: center;
+        .contenedor-sobre {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+            cursor: pointer;
+        }
+        .sobre {
+            position: relative;
+            width: 200px;
+            height: 140px;
+            background-color: #2a1b22;
+            border-radius: 0 0 8px 8px;
+            border: 2px solid var(--color-rosa);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        .sobre::before {
+            content: "";
+            position: absolute;
+            top: -2px; left: -2px;
+            width: 0; height: 0;
+            border-left: 102px solid transparent;
+            border-right: 102px solid transparent;
+            border-top: 80px solid var(--color-rosa);
+            transform-origin: top;
+            transition: transform 0.5s ease;
+            z-index: 2;
+        }
+        .sobre.abierto::before {
+            transform: rotateX(180deg) translateY(2px);
+            z-index: 0;
+        }
+        .corazon-sello {
+            position: absolute;
+            top: 30px; left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            z-index: 3;
+            transition: opacity 0.3s;
+        }
+        .sobre.abierto .corazon-sello { opacity: 0; }
+        .carta-contenido {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.8s ease, padding 0.5s ease;
+            background: #fff;
+            color: #333;
+            border-radius: 12px;
+            text-align: left;
+        }
+        .sobre.abierto + .carta-contenido {
+            max-height: 1000px;
             padding: 1.5rem;
-            font-size: 0.9rem;
-            margin-top: auto;
+            margin-top: 1.5rem;
+            border: 2px solid var(--color-rosa);
+        }
+
+        .corazon-flotante {
+            position: fixed;
+            color: rgba(255, 183, 197, 0.6);
+            font-size: 1.5rem;
+            pointer-events: none;
+            z-index: 999;
+            animation: subiendo 4s linear forwards;
+        }
+        @keyframes subiendo {
+            0% { transform: translateY(100vh) translateX(0) scale(0); opacity: 1; }
+            100% { transform: translateY(-10vh) translateX(50px) scale(1.2); opacity: 0; }
         }
     </style>
 </head>
-<body>
-
-    <header>
-        <h2>Nuestra Historia ❤️</h2>
-    </header>
+<body id="inicio">
 
     <main>
-        <section class="hero">
-            <div class="corazon">❤️</div>
-            <h1>¡Feliz 5 Meses!</h1>
-            <p>Un pequeño regalo por nuestros 5 meses. Te amo muchísimo.</p>
+        <section>
+            <h2>🖤 Bienvenida</h2>
+            <h1>❤️ Feliz 5 meses, mi amor ❤️</h1>
+            <blockquote>
+                "Cinco meses no cuentan nuestra historia, solo son el comienzo de todo lo que quiero vivir contigo."
+            </blockquote>
+            <a href="#tiempo" class="boton">✨ Comenzar</a>
+        </section>
+
+        <section id="tiempo">
+            <h2>⏳ Todo este tiempo contigo...</h2>
+            <blockquote>
+                "Cada segundo a tu lado se ha convertido en uno de mis recuerdos favoritos."
+            </blockquote>
+            <div class="contador-grid">
+                <div class="contador-item"><span class="contador-num" id="dias">0</span>Días</div>
+                <div class="contador-item"><span class="contador-num" id="horas">0</span>Horas</div>
+                <div class="contador-item"><span class="contador-num" id="minutos">0</span>Minutos</div>
+                <div class="contador-item"><span class="contador-num" id="segundos">0</span>Segundos</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>📸 Nuestros recuerdos</h2>
+            <div class="galeria">
+                <div class="foto-caja">
+                    <div class="foto-placeholder">📸</div>
+                    <div class="foto-frase">🌸 "Desde que llegaste, mi mundo es un lugar más bonito."</div>
+                </div>
+                <div class="foto-caja">
+                    <div class="foto-placeholder">📸</div>
+                    <div class="foto-frase">🌸 "Mi lugar favorito siempre será a tu lado."</div>
+                </div>
+                <div class="foto-caja">
+                    <div class="foto-placeholder">📸</div>
+                    <div class="foto-frase">🌸 "Gracias por llegar a mi vida."</div>
+                </div>
+                <div class="foto-caja">
+                    <div class="foto-placeholder">📸</div>
+                    <div class="foto-frase">🌸 "Te elegiría una y mil veces más."</div>
+                </div>
+                <div class="foto-caja">
+                    <div class="foto-placeholder">📸</div>
+                    <div class="foto-frase">🌸 "Cinco meses contigo y sigo enamorándome de ti."</div>
+                </div>
+                <div class="foto-caja">
+                    <div class="foto-placeholder">📸</div>
+                    <div class="foto-frase">🌸 "Contigo todo se siente más bonito."</div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>👀 Mi niña de ojitos bonitos</h2>
+            <blockquote>
+                🤍 Mi niña de ojitos bonitos...<br>
+                "Dicen que los ojos son el reflejo del alma. Si eso es cierto, en los tuyos encontré el lugar donde mi corazón siempre quiere volver."
+            </blockquote>
+            
+            <div class="contenedor-ojitos">
+                <div class="foto-placeholder" style="border-radius: 50%; width: 150px; height: 150px; margin: 0 auto;">👀</div>
+            </div>
+
+            <blockquote>
+                "Tus ojitos bonitos son el lugar donde siempre encuentro paz, ternura y el motivo para sonreír." 🌸
+            </blockquote>
+
+            <div class="nube-palabras">
+                <span class="palabra-tag">🤍 Amor</span><span class="palabra-tag">🏡 Hogar</span>
+                <span class="palabra-tag">🌸 Paz</span><span class="palabra-tag">✨ Calma</span>
+                <span class="palabra-tag">❤️ Sonrisa</span><span class="palabra-tag">🦋 Ternura</span>
+                <span class="palabra-tag">🌙 Destino</span><span class="palabra-tag">💗 Felicidad</span>
+                <span class="palabra-tag">🌷 Siempre</span><span class="palabra-tag">⭐ Mi persona favorita</span>
+                <span class="palabra-tag">💌 Mi niña de ojitos bonitos</span><span class="palabra-tag">🥹 Mi lugar seguro</span>
+                <span class="palabra-tag">💕 Mi inspiración</span><span class="palabra-tag">🌹 Mi felicidad</span>
+                <span class="palabra-tag">♾️ Infinito</span>
+            </div>
+        </section>
+
+        <section>
+            <h2>💌 Una carta para ti</h2>
+            <p style="font-size: 0.9rem; color: #aaa;">(Toca el sobre para abrirlo)</p>
+            <div class="contenedor-sobre">
+                <div class="sobre" id="sobreElemento" onclick="abrirCarta()">
+                    <div class="corazon-sello">💝</div>
+                </div>
+            </div>
+            <div class="carta-contenido" id="cartaContenido">
+                <p style="white-space: pre-line; line-height: 1.8; padding: 10px;">
+                    Escribe aquí tu carta más personal... 
+                    Puedes escribir todos los párrafos que desees expresar desde tu corazón para que se leen de forma súper elegante.
+                </p>
+            </div>
+        </section>
+
+        <section>
+            <h2>🎵 Una canción que siempre me recuerda a ti</h2>
+            <blockquote>
+                "No importa cuántas veces la escuche, siempre termina recordándome a ti." ❤️
+            </blockquote>
+            <a href="https://www.youtube.com/results?search_query=i+wanna+be+yours" target="_blank" class="boton">🎧 Escuchar "I Wanna Be Yours"</a>
+        </section>
+
+        <section>
+            <h2>❤️ Final</h2>
+            <blockquote style="text-align: left; border: none; background: transparent;">
+                "Gracias por estos cinco meses. Gracias por cada sonrisa, cada conversación y cada momento compartido. Espero que este sea solo el comienzo de una historia llena de recuerdos, sueños y mucho amor. Gracias por hacerme sentir tan afortunada de tenerte. Te amo con todo mi corazón. Feliz aniversario, mi amor. ❤️"
+            </blockquote>
+            <a href="#inicio" class="boton">✨ Volver al inicio</a>
         </section>
     </main>
 
-    <footer>
-        <p>Hecho con amor en GitHub Pages</p>
-    </footer>
+    <script>
+        // Configura aquí tu fecha (Año, Mes - 1, Día, Hora, Minuto)
+        const fechaInicio = new Date(2026, 2, 2, 0, 0, 0); 
 
+        function actualizarContador() {
+            const ahora = new Date();
+            const diferencia = ahora - fechaInicio;
+
+            const d = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+            const h = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((diferencia % (1000 * 60)) / 1000);
+
+            document.getElementById('dias').innerText = d;
+            document.getElementById('horas').innerText = h;
+            document.getElementById('minutos').innerText = m;
+            document.getElementById('segundos').innerText = s;
+        }
+        setInterval(actualizarContador, 1000);
+        actualizarContador();
+
+        function abrirCarta() {
+            const sobre = document.getElementById('sobreElemento');
+            sobre.classList.toggle('abierto');
+        }
+
+        function crearCorazon() {
+            const corazon = document.createElement('div');
+            corazon.classList.add('corazon-flotante');
+            corazon.innerText = '💗';
+            corazon.style.left = Math.random() * 100 + 'vw';
+            corazon.style.animationDuration = Math.random() * 2 + 3 + 's';
+            document.body.appendChild(corazon);
+            setTimeout(() => { corazon.remove(); }, 5000);
+        }
+        setInterval(crearCorazon, 400);
+    </script>
 </body>
 </html>
