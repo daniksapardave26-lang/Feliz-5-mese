@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz 5 Meses</title>
+    <style>
+        :root {
+            --color-principal: #4a154b;
+            --color-acento: #ff4a5a;
+            --color-fondo: #fff5f6;
+            --color-texto: #333333;
+            --color-blanco: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: var(--color-fondo);
+            color: var(--color-texto);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: var(--color-principal);
+            color: var(--color-blanco);
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        main {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+            flex: 1;
+        }
+
+        .hero {
+            background-color: var(--color-blanco);
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            color: var(--color-acento);
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+
+        .corazon {
+            font-size: 3rem;
+            color: var(--color-acento);
+            animation: latido 1.2s infinite;
+        }
+
+        @keyframes latido {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+
+        footer {
+            background-color: var(--color-principal);
+            color: #d1d5db;
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.9rem;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h2>Nuestra Historia ❤️</h2>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="corazon">❤️</div>
+            <h1>¡Feliz 5 Meses!</h1>
+            <p>Un pequeño regalo por nuestros 5 meses. Te amo muchísimo.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Hecho con amor en GitHub Pages</p>
+    </footer>
+
+</body>
+</html>
