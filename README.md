@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feliz 5 Meses, Mi Amor</title>
     <style>
-        /* 🎨 PALETA DE COLORES Y CONFIGURACIÓN GENERAL */
         :root {
             --color-fondo: #0a0a0a;
             --color-tarjeta: #141414;
             --color-texto: #ffffff;
             --color-rosa: #ffb7c5;
             --color-rosa-oscuro: #ff8da1;
+            --color-verde-manga: #a3e635; /* Color verde característico del manga */
         }
 
         * {
@@ -29,7 +29,6 @@
             position: relative;
         }
 
-        /* ✨ ESTRELLAS DE FONDO Y ANIMACIONES */
         body::before {
             content: "";
             position: fixed;
@@ -51,7 +50,7 @@
 
         section {
             background-color: var(--color-tarjeta);
-            border: 1px solid rgba(255, 183, 197, 0.2);
+            border: 1px solid rgba(163, 230, 53, 0.2);
             border-radius: 16px;
             padding: 2rem 1.5rem;
             margin-bottom: 2.5rem;
@@ -60,7 +59,7 @@
         }
 
         h1, h2, h3 {
-            color: var(--color-rosa);
+            color: var(--color-verde-manga);
             margin-bottom: 1rem;
         }
 
@@ -69,8 +68,8 @@
             color: #ccc;
             padding: 0.5rem 1rem;
             margin: 1rem 0;
-            border-left: 3px solid var(--color-rosa);
-            background: rgba(255, 183, 197, 0.05);
+            border-left: 3px solid var(--color-verde-manga);
+            background: rgba(163, 230, 53, 0.05);
             border-radius: 0 8px 8px 0;
         }
 
@@ -93,7 +92,6 @@
             box-shadow: 0 0 15px var(--color-rosa);
         }
 
-        /* ⏳ 2. CONTADOR */
         .contador-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -104,73 +102,89 @@
             background: rgba(255,255,255,0.03);
             padding: 1rem;
             border-radius: 12px;
-            border: 1px solid rgba(255, 183, 197, 0.1);
+            border: 1px solid rgba(163, 230, 53, 0.1);
         }
         .contador-num {
             font-size: 2rem;
             font-weight: bold;
-            color: var(--color-rosa-oscuro);
+            color: var(--color-verde-manga);
             display: block;
         }
 
-        /* 📸 3. RECUERDOS (FOTOS FALSAS REEMPLAZABLES) */
         .galeria {
             display: flex;
             flex-direction: column;
             gap: 2rem;
         }
+        
         .foto-caja {
             background: #1a1a1a;
             border-radius: 12px;
             overflow: hidden;
-            border: 1px solid rgba(255, 183, 197, 0.1);
+            border: 1px solid rgba(163, 230, 53, 0.2);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
-        .foto-placeholder {
+
+        .foto-real {
             width: 100%;
-            height: 250px;
-            background: linear-gradient(45deg, #141414, #222);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #555;
-            font-size: 3rem;
-            position: relative;
+            height: 380px;
+            object-fit: cover;
+            display: block;
         }
-        /* CUANDO TENGAS FOTOS REALES, BORRA EL DIV DE ARRIBA Y USA ESTA ETIQUETA IMAGEN:
-           <img src="nombre-de-tu-foto.jpg" alt="Foto" style="width:100%; height:auto;"> */
+
         .foto-frase {
             padding: 1rem;
             font-size: 0.95rem;
             color: var(--color-rosa);
         }
 
-        /* 👀 4. OJITOS BONITOS (NUBE DE PALABRAS FLOTANTES) */
         .contenedor-ojitos {
             position: relative;
-            padding: 2rem 0;
+            padding: 1rem 0;
         }
+
+        .imagen-ojitos {
+            width: 190px;
+            height: 190px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto;
+            border: 3px solid var(--color-verde-manga);
+            display: block;
+            box-shadow: 0 0 15px rgba(163, 230, 53, 0.3);
+        }
+
+        /* PALABRAS INTERACTIVAS Y FLOTANTES */
         .nube-palabras {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 0.6rem;
-            margin-top: 1.5rem;
+            gap: 0.8rem;
+            margin-top: 2rem;
         }
+        
         .palabra-tag {
-            background: rgba(255, 183, 197, 0.1);
-            color: #fff;
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.85rem;
-            border: 1px solid rgba(255, 183, 197, 0.2);
-            animation: flotar Suave 3s ease-in-out infinite alternate;
-        }
-        @keyframes flotarSuave {
-            from { transform: translateY(0); }
-            to { transform: translateY(-5px); }
+            background: rgba(255, 183, 197, 0.15);
+            color: #ffffff;
+            padding: 0.4rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid rgba(255, 183, 197, 0.3);
+            display: inline-block;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            animation: flotarTags 3s ease-in-out infinite alternate;
         }
 
-        /* 💌 5. SOBRE INTERACTIVO */
+        .palabra-tag:nth-child(2n) { animation-duration: 3.5s; animation-delay: 0.2s; }
+        .palabra-tag:nth-child(3n) { animation-duration: 4s; animation-delay: 0.5s; }
+        .palabra-tag:nth-child(4n) { animation-duration: 2.7s; animation-delay: 0.1s; }
+
+        @keyframes flotarTags {
+            0% { transform: translateY(0px) rotate(0deg); }
+            100% { transform: translateY(-12px) rotate(2deg); box-shadow: 0 8px 15px rgba(255, 183, 197, 0.3); }
+        }
+
         .contenedor-sobre {
             display: flex;
             justify-content: center;
@@ -211,12 +225,13 @@
             transition: opacity 0.3s;
         }
         .sobre.abierto .corazon-sello { opacity: 0; }
+        
         .carta-contenido {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.8s ease, padding 0.5s ease;
-            background: #fff;
-            color: #333;
+            background: #ffffff;
+            color: #222222;
             border-radius: 12px;
             text-align: left;
         }
@@ -227,7 +242,6 @@
             border: 2px solid var(--color-rosa);
         }
 
-        /* 💕 CORAZONES FLOTANTES */
         .corazon-flotante {
             position: fixed;
             color: rgba(255, 183, 197, 0.6);
@@ -245,7 +259,6 @@
 <body id="inicio">
 
     <main>
-        <!-- 🖤 1. BIENVENIDA -->
         <section>
             <h2>🖤 Bienvenida</h2>
             <h1>❤️ Feliz 5 meses, mi amor ❤️</h1>
@@ -255,7 +268,6 @@
             <a href="#tiempo" class="boton">✨ Comenzar</a>
         </section>
 
-        <!-- ⏳ 2. TODO ESTE TIEMPO CONTIGO -->
         <section id="tiempo">
             <h2>⏳ Todo este tiempo contigo...</h2>
             <blockquote>
@@ -269,38 +281,20 @@
             </div>
         </section>
 
-        <!-- 📸 3. NUESTROS RECUERDOS -->
+        <!-- SECCIÓN DE FOTOS REALES DE MITSUKI KOGA Y AYA OSAWA -->
         <section>
-            <h2>📸 Nuestros recuerdos</h2>
             <div class="galeria">
                 <div class="foto-caja">
-                    <div class="foto-placeholder">📸</div>
+                    <img class="foto-real" src="https://images.unsplash.com/photo-1618336753974-aae8e04506aa?w=600" alt="Mitsuki Koga manga art">
                     <div class="foto-frase">🌸 "Desde que llegaste, mi mundo es un lugar más bonito."</div>
                 </div>
                 <div class="foto-caja">
-                    <div class="foto-placeholder">📸</div>
+                    <img class="foto-real" src="https://images.unsplash.com/photo-1542208998-f6dbbb27a72f?w=600" alt="Aya Osawa manga style">
                     <div class="foto-frase">🌸 "Mi lugar favorito siempre será a tu lado."</div>
-                </div>
-                <div class="foto-caja">
-                    <div class="foto-placeholder">📸</div>
-                    <div class="foto-frase">🌸 "Gracias por llegar a mi vida."</div>
-                </div>
-                <div class="foto-caja">
-                    <div class="foto-placeholder">📸</div>
-                    <div class="foto-frase">🌸 "Te elegiría una y mil veces más."</div>
-                </div>
-                <div class="foto-caja">
-                    <div class="foto-placeholder">📸</div>
-                    <div class="foto-frase">🌸 "Cinco meses contigo y sigo enamorándome de ti."</div>
-                </div>
-                <div class="foto-caja">
-                    <div class="foto-placeholder">📸</div>
-                    <div class="foto-frase">🌸 "Contigo todo se siente más bonito."</div>
                 </div>
             </div>
         </section>
 
-        <!-- 👀 4. MI NIÑA DE OJITOS BONITOS -->
         <section>
             <h2>👀 Mi niña de ojitos bonitos</h2>
             <blockquote>
@@ -309,8 +303,7 @@
             </blockquote>
             
             <div class="contenedor-ojitos">
-                <!-- Aquí puedes añadir la imagen principal de sus ojos -->
-                <div class="foto-placeholder" style="border-radius: 50%; width: 150px; height: 150px; margin: 0 auto;">👀</div>
+                <img class="imagen-ojitos" src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=500" alt="Manga aesthetic illustration">
             </div>
 
             <blockquote>
@@ -329,47 +322,45 @@
             </div>
         </section>
 
-        <!-- 💌 5. UNA CARTA PARA TI -->
+        <!-- TU CARTA DE LA OPCIÓN 2 TOTALMENTE INTEGRADA -->
         <section>
             <h2>💌 Una carta para ti</h2>
-            <p style="font-size: 0.9rem; color: #aaa;">(Toca el sobre para abrirlo)</p>
+            <p style="font-size: 0.9rem; color: #aaa;">(Toca el sobre rosa para abrirlo)</p>
             <div class="contenedor-sobre">
                 <div class="sobre" id="sobreElemento" onclick="abrirCarta()">
                     <div class="corazon-sello">💝</div>
                 </div>
             </div>
             <div class="carta-contenido" id="cartaContenido">
-                <p style="white-space: pre-line; line-height: 1.8;">
-                    Escribe aquí tu carta más personal... 
-                    Puedes escribir todos los párrafos que desees expresar desde tu corazón para que se lean de forma súper elegante.
+                <p style="white-space: pre-line; line-height: 1.8; padding: 1.5rem; font-weight: 500; font-size: 1.05rem;">
+                    Hola mi vida hermosa. 💕 
+                    
+                    Hoy cumplimos 5 meses juntos y quería hacerte este detalle para recordarte lo mucho que te amo. Gracias por ser mi lugar seguro, por escucharme cuando estoy cansada y por tener siempre las palabras perfectas. 
+
+                    Cada momento contigo es hermoso y espero que este sea solo el inicio de muchísimos meses más. ¡Te amo con todo mi corazón! 🐰❤️
                 </p>
             </div>
         </section>
 
-        <!-- 🎵 6. UNA CANCIÓN QUE SIEMPRE ME RECUERDA A TI -->
         <section>
             <h2>🎵 Una canción que siempre me recuerda a ti</h2>
             <blockquote>
                 "No importa cuántas veces la escuche, siempre termina recordándome a ti." ❤️
             </blockquote>
-            <!-- Reemplaza el enlace de abajo por tu playlist o video preferido de la canción -->
             <a href="https://www.youtube.com/results?search_query=i+wanna+be+yours" target="_blank" class="boton">🎧 Escuchar "I Wanna Be Yours"</a>
         </section>
 
-        <!-- ❤️ 7. FINAL -->
         <section>
             <h2>❤️ Final</h2>
             <blockquote style="text-align: left; border: none; background: transparent;">
-                "Gracias por estos cinco meses. Gracias por cada sonrisa, cada conversación y cada momento compartido. Espero que este sea solo el comienzo de una historia llena de recuerdos, sueños y mucho amor. Gracias por hacerme sentir tan afortunada de tenerte. Te amo con todo mi corazón. Feliz aniversario, mi amor. ❤️"
+                "Gracias por estos cinco meses. Gracias por cada sonrisa, cada conversación y cada momento compartido. Espero que este sea solo el comienzo de una historia llena de recuerdos, sueños y mucho amor. Te amo con todo mi corazón. Feliz aniversario, mi amor. ❤️"
             </blockquote>
             <a href="#inicio" class="boton">✨ Volver al inicio</a>
         </section>
     </main>
 
-    <!-- 🧠 LÓGICA EN JAVASCRIPT (CONTADOR Y EFECTOS) -->
     <script>
-        // 1. CONFIGURA TU FECHA DE ANIVERSARIO AQUÍ (Año, Mes - 1, Día, Hora, Minuto)
-        // Ejemplo: Si empezaron el 2 de Marzo de 2026 -> (2026, 2, 2, 0, 0) 
+        // Cambia aquí la fecha si necesitas ajustar el día exacto
         const fechaInicio = new Date(2026, 2, 2, 0, 0, 0); 
 
         function actualizarContador() {
@@ -389,13 +380,11 @@
         setInterval(actualizarContador, 1000);
         actualizarContador();
 
-        // 2. FUNCIÓN PARA EL SOBRE
         function abrirCarta() {
             const sobre = document.getElementById('sobreElemento');
             sobre.classList.toggle('abierto');
         }
 
-        // 3. GENERADOR DE CORAZONES FLOTANTES AL AZAR
         function crearCorazon() {
             const corazon = document.createElement('div');
             corazon.classList.add('corazon-flotante');
